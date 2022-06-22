@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "../User_Guide.ent">
+%BOOK_ENTITIES;
+]>
+
+<section id="ra_configuration">
+
+	<title>Configuration</title>
+
+	<para>The Resource Adaptor supports configuration only at Resource Adaptor Entity creation time. The following table enumerates the configuration properties:</para>
+  <table frame="all" pgwide="1">
+    <title>Resource Adaptor&apos;s Configuration Properties</title>
+    <tgroup cols="4" colsep="1">
+      <colspec colnum="1" colname="c0"/>
+      <colspec colnum="2" colname="c1"/>
+      <colspec colnum="3" colname="c2"/>
+      <colspec colnum="4" colname="c3"/>
+      <thead>
+        <row>
+          <entry>Property Name</entry>
+          <entry>Description</entry>
+          <entry>Property Type</entry>
+          <entry>Default Value</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>HTTP_CLIENT_ FACTORY</entry>
+          <entry>May be used to provide a class which is responsible for building the HTTP Client.</entry>
+          <entry>java.lang.String</entry>
+          <entry/>
+        </row>
+        <row>
+          <entry>DEFAULT_MAX_CONNECTIONS_PER_ROUTE</entry>
+          <entry>Configures the client to override default limit of defaul max concurrent connections for routes.</entry>
+          <entry>java.lang.Integer</entry>
+          <entry>500</entry>
+        </row>
+        <row>
+          <entry>MAX_CONNECTIONS_TOTAL</entry>
+          <entry>Max total concurrent connections.</entry>
+          <entry>java.lang.Integer</entry>
+          <entry>1000</entry>
+        </row>
+        <row>
+          <entry>DEFAULT_SOCKET_TIMEOUT</entry>
+          <entry>Default socket timeout value for non-blocking I/O operations.</entry>
+          <entry>java.lang.Integer</entry>
+          <entry>30000</entry>
+        </row>
+        <row>
+          <entry>DEFAULT_CONNECT_TIMEOUT</entry>
+          <entry>Default connect timeout value for non-blocking connection requests.</entry>
+          <entry>java.lang.Integer</entry>
+          <entry>30000</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  		
+</section>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<artifactId>http-servlet-parent</artifactId>
+		<groupId>org.mobicents.resources</groupId>
+		<version>7.2.0-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>http-servlet-common</artifactId>
+	<name>Restcomm :: Resources :: ${project.artifactId}</name>
+
+	<properties>
+		<module.name>org.restcomm.slee.resource.http.common</module.name>
+		<module.path>org/restcomm/slee/resource/http/common</module.path>
+
+		<slee.lib.path>org/restcomm/slee/container/lib</slee.lib.path>
+	</properties>
+		
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>restcomm-slee-ra-http-servlet-common</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>prepare-module</id>
+						<phase>install</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<copy todir="target" flatten="true">
+									<fileset dir=".">
+										<include name="src/main/module/module.xml"/>
+									</fileset>
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>deploy-module-wildfly</id>
+			<build>
+				<finalName>restcomm-slee-ra-http-servlet-common</finalName>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>deploy-war</id>
+								<phase>install</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<copy overwrite="true" verbose="true"
+											  file="target/${project.build.finalName}.jar"
+											  toDir="${jboss.home}/modules/system/layers/base/${module.path}/main" />
+										<copy overwrite="true" verbose="true"
+											  file="src/main/module/module.xml"
+											  toDir="${jboss.home}/modules/system/layers/base/${module.path}/main" />
+
+										<!-- clean before? -->
+										<replace file="${jboss.home}/modules/system/layers/base/${slee.lib.path}/main/module.xml">
+											<replacetoken><![CDATA[<module name="org.restcomm.slee.resource.http.common" export="true"/>]]></replacetoken>
+											<replacevalue><![CDATA[]]></replacevalue>
+										</replace>
+
+										<replace file="${jboss.home}/modules/system/layers/base/${slee.lib.path}/main/module.xml">
+											<replacetoken><![CDATA[</dependencies>]]></replacetoken>
+											<replacevalue><![CDATA[
+		<module name="org.restcomm.slee.resource.http.common" export="true"/>
+	</dependencies>]]></replacevalue>
+										</replace>
+									</tasks>
+								</configuration>
+							</execution>
+							<execution>
+								<id>undeploy-war</id>
+								<phase>clean</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<tasks>
+										<delete dir="${jboss.home}/modules/system/layers/base/${module.path}" />
+
+										<replace file="${jboss.home}/modules/system/layers/base/${slee.lib.path}/main/module.xml">
+											<replacetoken><![CDATA[<module name="org.restcomm.slee.resource.http.common" export="true"/>]]></replacetoken>
+											<replacevalue><![CDATA[]]></replacevalue>
+										</replace>
+									</tasks>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

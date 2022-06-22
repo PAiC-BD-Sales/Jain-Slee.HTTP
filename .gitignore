@@ -1,0 +1,36 @@
+# Java compiled #
+#################
+*.class
+
+# IDE #
+###########
+.classpath
+.project
+.settings
+.idea
+*.iml
+
+# Maven #
+#########
+target
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# SLEE
+${env.JBOSS_HOME}
+${release.dir}
+enablers/rest-client/docs/sources-restcomm/src/
+resources/http-client-nio/docs/sources-restcomm/src/
+resources/http-client/docs/sources-restcomm/src/
+resources/http-servlet/docs/sources-restcomm/src/
+/.metadata/
+
