@@ -1,8 +1,11 @@
 # Extended JAIN SLEE HTTP Resource Adaptor
-> The Jain Slee HTTP is cloned from [https://github.com/RestComm/jain-slee.http](https://github.com/RestComm/jain-slee.http) from which we have added a set of improvements and new features listed in a later section of this file
+> Our Extended JAIN SLEE HTTP Resource Adaptor builds upon the original JAIN SLEE HTTP resource adaptor from [https://github.com/RestComm/jain-slee.http](https://github.com/RestComm/jain-slee.http). We have enhanced it with various improvements and innovative features.
 
-## Introduction JAIN SLEE Resource Adaptor
-The Hyper-Text Transfer Protocol (HTTP) is perhaps the most significant protocol used on the Internet today. Web services, network-enabled appliances, and the growth of network computing continue to expand the role of the HTTP protocol beyond user-driven web browsers while increasing the number of applications that require HTTP support; for example, Applications developed using SLEE. The Jakarta Commons HttpClient component provides an efficient, up-to-date, and feature-rich package implementing the client-side of the most recent HTTP standards and recommendations. HTTP Client RA provides the client-side HTTP standard within the SLEE environment, using the popular Apache Commons HTTP Client library. An SBB can use the HTTP Client RA to make a request and get the Response Synchronously or Asynchronously. 
+## Key Features
+* Seamless integration of HTTP functionality into SLEE environments.
+* Utilizes the Apache Commons HTTP Client library for reliable client-side HTTP support.
+* Enables SLEE applications to make synchronous or asynchronous HTTP requests.
+* Ideal for a wide range of networking applications within the modern Internet landscape.
 	
 ## Pre-Requisites for Building from Source
 ```
