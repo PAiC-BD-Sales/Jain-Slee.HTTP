@@ -14,7 +14,7 @@
 - JDK 11 or Higher
 ```
 ## What is coming?
-For details on our planned features and future direction please refer to PAiChain (https://paic-chain.com/).
+To find information about our planned features and our future roadmap, kindly visit PAiC at https://paicbd.com/.
 
 ## News
 For the latest news please refer to PAiChain.
